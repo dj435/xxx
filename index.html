@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Imágenes</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        /* Título sombreado */
+        h1 {
+            margin: 20px 0;
+            font-size: 2.5rem;
+            color: #333;
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra del texto */
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1200px;  /* Limitamos el ancho máximo de la galería */
+        }
+
+        .gallery-item {
+            width: 30%;  /* Cada imagen ocupará el 30% del ancho disponible */
+            margin-bottom: 15px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery-item img {
+            width: 100%;  /* Las imágenes se ajustan al ancho de su contenedor */
+            height: auto;  /* Mantener la proporción de la imagen */
+            border-radius: 8px;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);  /* Efecto de zoom al pasar el ratón */
+        }
+
+        /* Media query para pantallas más pequeñas (por ejemplo, teléfonos) */
+        @media (max-width: 768px) {
+            .gallery-item {
+                width: 48%;  /* 2 imágenes por fila en pantallas medianas */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-item {
+                width: 100%;  /* 1 imagen por fila en pantallas pequeñas */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Galeria de Imagenes</h1>
+    <div class="gallery">
+        <!-- Cada imagen está envuelta en un enlace -->
+
+        <div class="gallery-item">
+            <a href="paginas/brazzerstv.html" target="_blank">
+    <img src="imagenes/brazzerstv.jpg" alt="Brazzers Imagen">
+</a>
+        </div>
+
+
+        <div class="gallery-item">
+            <a href="paginas/hustlerhd.html" target="_blank">
+                <img src="imagenes/hustlerhd.jpg" alt="Imagen 2">
+            </a>
+        </div>
+        <div class="gallery-item">
+                <a href="paginas/hustlertv.html" target="_blank">
+                <img src="imagenes/hustlertv.jpg" alt="Imagen 2">
+            </a>
+        </div>
+        <div class="gallery-item">
+            <a href="https://example.com/4" target="_blank">
+                <img src="https://via.placeholder.com/300x200" alt="Imagen 4">
+            </a>
+        </div>
+        <div class="gallery-item">
+            <a href="https://example.com/5" target="_blank">
+                <img src="https://via.placeholder.com/300x200" alt="Imagen 5">
+            </a>
+        </div>
+        <div class="gallery-item">
+            <a href="https://example.com/6" target="_blank">
+                <img src="https://via.placeholder.com/300x200" alt="Imagen 6">
+            </a>
+        </div>
+    </div>
+</body>
+</html>
