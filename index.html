@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Títulos</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background-color: #FA2A55;
+        }
+
+        /* Título sombreado */
+        h1 {
+            margin: 20px 0;
+            font-size: 2.5rem;
+            color: #333;
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .gallery-item {
+            width: 30%;
+            margin-bottom: 15px;
+            background-color: yellow; /* Fondo blanco */
+            padding: 17px; /* Espaciado interno */
+            border-radius: 8px;
+            border: 2px solid black;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02); /* Efecto de zoom al pasar el ratón */
+        }
+
+        .gallery-item a {
+            text-decoration: none;
+            color: black;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Media query para pantallas más pequeñas */
+        @media (max-width: 768px) {
+            .gallery-item {
+                width: 48%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>CANALES XXX</h1>
+    <div class="gallery">
+        <!-- Cada título envuelto en un enlace -->
+        <div class="gallery-item">
+            <a href="paginas/brazzerstv.html" target="_blank">Brazzers TV</a>
+        </div>
+        <div class="gallery-item">
+            <a href="paginas/hustlerhd.html" target="_blank">Hustler HD</a>
+        </div>
+        <div class="gallery-item">
+            <a href="paginas/hustlerblue.html" target="_blank">Hustler Blue</a>
+        </div>
+        <div class="gallery-item">
+            <a href="paginas/penthousepassion.html" target="_blank">Penthouse Passion</a>
+        </div>
+        <div class="gallery-item">
+            <a href="paginas/playboy.html" target="_blank">Playboy</a>
+        </div>
+        <div class="gallery-item">
+            <a href="https://example.com/6" target="_blank">Otro Canal</a>
+        </div>
+    </div>
+</body>
+</html>
