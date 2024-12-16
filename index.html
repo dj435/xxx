@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Player Multi-Enlace</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .contenedor {
+            height: 100%;
+            width: 100%;
+        }
+        #player {
+            height: 85%;
+            width: 100%;
+        }
+        #controls {
+            height: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+        }
+        #controls button, #current-title {
+            margin: 0 10px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid black;
+            background: none;
+            cursor: default;
+        }
+        #controls button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div id="player"></div>
+        <div id="controls">
+            <button id="prev">Anterior</button>
+            <div id="current-title">MILF</div>
+            <button id="next">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        // Lista de enlaces
+        const links = [
+            { title: "MILF", url: "https://cdn.redtraffic.net/milf.m3u8" },
+            { title: "BIG DICK", url: "https://cdn.redtraffic.net/bigdick.m3u8" },
+            { title: "Otro Enlace Más", url: "https://cdn.redtraffic.net/bigass.m3u8" }
+        ];
+
+        // Índice del enlace actual
+        let currentIndex = 0;
+
+        // Inicializar el reproductor
+        const player = new Clappr.Player({
+            source: links[currentIndex].url,
+            title: links[currentIndex].title,
+            height: "100%",
+            width: "100%",
+            parentId: "#player",
+            autoPlay: true,
+            mute: false
+        });
+
+        // Referencias a los controles
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        const currentTitle = document.getElementById('current-title');
+
+        // Función para actualizar el reproductor
+        function updatePlayer(index) {
+            currentIndex = index;
+            player.load(links[currentIndex].url);
+            player.setTitle(links[currentIndex].title);
+            currentTitle.textContent = links[currentIndex].title;
+        }
+
+        // Evento para botón "Anterior"
+        prevButton.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                updatePlayer(currentIndex - 1);
+            }
+        });
+
+        // Evento para botón "Siguiente"
+        nextButton.addEventListener('click', () => {
+            if (currentIndex < links.length - 1) {
+                updatePlayer(currentIndex + 1);
+            }
+        });
+    </script>
+</body>
+</html>
