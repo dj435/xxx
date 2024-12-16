@@ -47,11 +47,10 @@
 <body>
     <div class="contenedor">
         <div id="player">
-            <iframe src="https://www.pornhub.com/embed/6758f6594a1f0?autoplay=1" frameborder="0" width="100%" height="100%" allowfullscreen></iframe>
+            <iframe id="videoIframe" src="https://www.pornhub.com/embed/6758f6594a1f0?autoplay=1" frameborder="0" width="100%" height="100%" allowfullscreen></iframe>
         </div>
         <div id="controls">
             <button id="prev">◀◀</button>
-            <!-- Eliminar el título aquí -->
             <button id="next">▶▶</button>
         </div>
     </div>
@@ -74,13 +73,19 @@
         const prevButton = document.getElementById('prev');
         const nextButton = document.getElementById('next');
         const playerDiv = document.getElementById('player');
+        const iframe = document.getElementById('videoIframe');
 
         // Función para actualizar el reproductor con un video aleatorio
         function updatePlayer(index) {
             currentIndex = index;
             // Construir la URL del iframe usando el código del video y agregar autoplay
             const videoUrl = `https://www.pornhub.com/embed/${videoCodes[currentIndex].code}?autoplay=1`;
-            playerDiv.innerHTML = `<iframe src="${videoUrl}" frameborder="0" width="100%" height="100%" allowfullscreen></iframe>`;
+            iframe.src = videoUrl;
+
+            // Forzar que el video se reproduzca si autoplay está bloqueado
+            iframe.onload = () => {
+                iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+            };
         }
 
         // Función para obtener un índice aleatorio
