@@ -16,22 +16,22 @@
             width: 100%;
         }
         #player {
-            height: 85%;
+            height: 92.5%;
             width: 100%;
         }
         #controls {
-            height: 15%;
+            height: 6.8%;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: white;
+            background-color: #f0f0f0;
         }
         #controls button, #current-title {
             margin: 0 10px;
-            padding: 10px;
+            padding: 5px;
             font-size: 16px;
-            border: 1px solid black;
-            background: none;
+            border: 2px solid black;
+            background: yellow;
             cursor: default;
         }
         #controls button {
@@ -54,7 +54,7 @@
         const links = [
             { title: "MILF", url: "https://cdn.redtraffic.net/milf.m3u8" },
             { title: "BIG DICK", url: "https://cdn.redtraffic.net/bigdick.m3u8" },
-            { title: "Otro Enlace Más", url: "https://cdn.redtraffic.net/bigass.m3u8" }
+            { title: "BIG ASS", url: "https://cdn.redtraffic.net/bigass.m3u8" }
         ];
 
         // Índice del enlace actual
@@ -80,7 +80,6 @@
         function updatePlayer(index) {
             currentIndex = index;
             player.load(links[currentIndex].url);
-            player.setTitle(links[currentIndex].title);
             currentTitle.textContent = links[currentIndex].title;
         }
 
@@ -96,6 +95,11 @@
             if (currentIndex < links.length - 1) {
                 updatePlayer(currentIndex + 1);
             }
+        });
+
+        // Asegurar que el título se actualice después de cada carga
+        player.on(Clappr.Events.PLAYER_LOADED, () => {
+            currentTitle.textContent = links[currentIndex].title;
         });
     </script>
 </body>
