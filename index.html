@@ -20,17 +20,17 @@
             width: 100%;
         }
         #controls {
-            height: 6.8%;
+            height: 7.5%;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f0f0f0;
+            background-color: black;
         }
         #controls button, #current-title {
             margin: 0 10px;
-            padding: 5px;
-            font-size: 16px;
-            border: 2px solid black;
+            padding: 3px;
+            font-size: 18px;
+            border: 2px solid magenta;
             background: yellow;
             cursor: default;
         }
@@ -44,7 +44,7 @@
         <div id="player"></div>
         <div id="controls">
             <button id="prev">Anterior</button>
-            <div id="current-title">MILF</div>
+            <div id="current-title">MILFL</div>
             <button id="next">Siguiente</button>
         </div>
     </div>
@@ -52,9 +52,11 @@
     <script>
         // Lista de enlaces
         const links = [
-            { title: "MILF", url: "https://cdn.redtraffic.net/milf.m3u8" },
+         { title: "MILF", url: "https://cdn.redtraffic.net/milf.m3u8" },
             { title: "BIG DICK", url: "https://cdn.redtraffic.net/bigdick.m3u8" },
-            { title: "BIG ASS", url: "https://cdn.redtraffic.net/bigass.m3u8" }
+            { title: "BIG ASS", url: "https://cdn.redtraffic.net/bigass.m3u8" },
+          { title: "BIG TITS", url: "https://cdn.redtraffic.net/bigtits.m3u8" }
+          
         ];
 
         // Índice del enlace actual
@@ -87,6 +89,8 @@
         prevButton.addEventListener('click', () => {
             if (currentIndex > 0) {
                 updatePlayer(currentIndex - 1);
+            } else {
+                updatePlayer(links.length - 1); // Ir al último si estamos en el primero
             }
         });
 
@@ -94,6 +98,8 @@
         nextButton.addEventListener('click', () => {
             if (currentIndex < links.length - 1) {
                 updatePlayer(currentIndex + 1);
+            } else {
+                updatePlayer(0); // Volver al primero si estamos en el último
             }
         });
 
