@@ -19,44 +19,12 @@
             height: 92%;
             width: 100%;
         }
-        #controls {
-            height: 8%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(0, 0, 255, 0.7);
-        }
-        #controls button {
-            margin: 0 20px;
-            padding: 20px;
-            font-size: 40px;
-            border: 2px solid black;
-            border-radius: 10px;
-            background: white;
-            cursor: pointer;
-            outline: none;
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        #controls button:hover {
-            background-color: #ff6347;
-            border-color: red;
-        }
-        #controls button:focus {
-            background-color: #f0a500;
-        }
-        #controls button:active {
-            background-color: #f0a500;
-        }
     </style>
 </head>
 <body>
     <div class="contenedor">
         <div id="player">
             <iframe id="videoIframe" src="https://www.pornhub.com/embed/6758f6594a1f0?autoplay=1" frameborder="0" width="100%" height="100%" allowfullscreen></iframe>
-        </div>
-        <div id="controls">
-            <button id="prev" tabindex="1">◀◀</button>
-            <button id="next" tabindex="2">▶▶</button>
         </div>
     </div>
 
@@ -74,9 +42,7 @@
         // Índice del enlace actual
         let currentIndex = 0;
 
-        // Referencias a los controles
-        const prevButton = document.getElementById('prev');
-        const nextButton = document.getElementById('next');
+        // Referencia al iframe
         const iframe = document.getElementById('videoIframe');
 
         // Función para actualizar el reproductor con un video aleatorio
@@ -92,22 +58,21 @@
             return Math.floor(Math.random() * videoCodes.length);
         }
 
-        // Evento para botón "Anterior" (elige aleatoriamente un video)
-        prevButton.addEventListener('click', () => {
-            let randomIndex = getRandomIndex();
-            while (randomIndex === currentIndex) {
-                randomIndex = getRandomIndex(); // Asegurarse de que el video no se repita
+        // Escuchar los eventos de las teclas del control remoto (flechas)
+        window.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') { // Flecha izquierda (anterior)
+                let randomIndex = getRandomIndex();
+                while (randomIndex === currentIndex) {
+                    randomIndex = getRandomIndex(); // Asegurarse de que el video no se repita
+                }
+                updatePlayer(randomIndex);
+            } else if (event.key === 'ArrowRight') { // Flecha derecha (siguiente)
+                let randomIndex = getRandomIndex();
+                while (randomIndex === currentIndex) {
+                    randomIndex = getRandomIndex(); // Asegurarse de que el video no se repita
+                }
+                updatePlayer(randomIndex);
             }
-            updatePlayer(randomIndex);
-        });
-
-        // Evento para botón "Siguiente" (elige aleatoriamente un video)
-        nextButton.addEventListener('click', () => {
-            let randomIndex = getRandomIndex();
-            while (randomIndex === currentIndex) {
-                randomIndex = getRandomIndex(); // Asegurarse de que el video no se repita
-            }
-            updatePlayer(randomIndex);
         });
 
         // Inicializar el reproductor con el primer video
