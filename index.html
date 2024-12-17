@@ -27,17 +27,22 @@
             background-color: rgba(0, 0, 255, 0.7);
         }
         #controls button {
-            margin: 0 15px;
-            padding: 10px;
-            font-size: 20px;
+            margin: 0 20px;
+            padding: 20px;
+            font-size: 40px;
             border: 2px solid black;
-            border-radius: 5px;
+            border-radius: 10px;
             background: white;
             cursor: pointer;
+            outline: none;
+            transition: background-color 0.3s, border-color 0.3s;
         }
         #controls button:hover {
             background-color: #ff6347;
             border-color: red;
+        }
+        #controls button:focus {
+            background-color: #f0a500;
         }
         #controls button:active {
             background-color: #f0a500;
@@ -50,8 +55,8 @@
             <iframe id="videoIframe" src="https://www.pornhub.com/embed/6758f6594a1f0?autoplay=1" frameborder="0" width="100%" height="100%" allowfullscreen></iframe>
         </div>
         <div id="controls">
-            <button id="prev">◀◀</button>
-            <button id="next">▶▶</button>
+            <button id="prev" tabindex="1">◀◀</button>
+            <button id="next" tabindex="2">▶▶</button>
         </div>
     </div>
 
@@ -72,7 +77,6 @@
         // Referencias a los controles
         const prevButton = document.getElementById('prev');
         const nextButton = document.getElementById('next');
-        const playerDiv = document.getElementById('player');
         const iframe = document.getElementById('videoIframe');
 
         // Función para actualizar el reproductor con un video aleatorio
@@ -81,11 +85,6 @@
             // Construir la URL del iframe usando el código del video y agregar autoplay
             const videoUrl = `https://www.pornhub.com/embed/${videoCodes[currentIndex].code}?autoplay=1`;
             iframe.src = videoUrl;
-
-            // Forzar que el video se reproduzca si autoplay está bloqueado
-            iframe.onload = () => {
-                iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-            };
         }
 
         // Función para obtener un índice aleatorio
