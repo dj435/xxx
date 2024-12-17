@@ -33,55 +33,6 @@
         </div>
     </div>
 
-    <script>
-        // Lista de códigos de video de Pornhub (solo el código después de 'embed/')
-        const videoCodes = [
-            { code: "6758f6594a1f0" },
-            { code: "ph634ce7ee7cc73" },
-            { code: "6759064d50736" },
-            { code: "67492e52356d2" },
-            { code: "66efae7f8f31f" },
-            { code: "66aedbb505618" }
-        ];
-
-        // Índice del enlace actual
-        let currentIndex = 0;
-
-        // Referencia al iframe
-        const iframe = document.getElementById('videoIframe');
-
-        // Función para actualizar el reproductor con un video aleatorio
-        function updatePlayer(index) {
-            currentIndex = index;
-            // Construir la URL del iframe usando el código del video y agregar autoplay
-            const videoUrl = `https://www.pornhub.com/embed/${videoCodes[currentIndex].code}?autoplay=1`;
-            iframe.src = videoUrl;
-        }
-
-        // Función para obtener un índice aleatorio
-        function getRandomIndex() {
-            return Math.floor(Math.random() * videoCodes.length);
-        }
-
-        // Escuchar los eventos de las teclas del control remoto (flechas)
-        window.addEventListener('keydown', function(event) {
-            if (event.key === 'ArrowLeft') { // Flecha izquierda (anterior)
-                let randomIndex = getRandomIndex();
-                while (randomIndex === currentIndex) {
-                    randomIndex = getRandomIndex(); // Asegurarse de que el video no se repita
-                }
-                updatePlayer(randomIndex);
-            } else if (event.key === 'ArrowRight') { // Flecha derecha (siguiente)
-                let randomIndex = getRandomIndex();
-                while (randomIndex === currentIndex) {
-                    randomIndex = getRandomIndex(); // Asegurarse de que el video no se repita
-                }
-                updatePlayer(randomIndex);
-            }
-        });
-
-        // Inicializar el reproductor con el primer video
-        updatePlayer(currentIndex);
-    </script>
+    
 </body>
 </html>
